@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
-import { Input } from "@/components/ui/Input"; 
+import { Input } from "@/components/ui/Input";
 
 import { Switch } from "@/components/ui/switch";
 
@@ -30,22 +30,17 @@ export default function BookFreeClass() {
     },
   });
 
- 
-
   return (
     <div className="overflow-hidden rounded-3xl bg-white shadow-lg mx-auto max-w-6xl">
       <div className="grid md:grid-cols-2">
         {/* Left Panel */}
         <div className="bg-[#f15a29] p-8 text-white md:p-12">
-          <div className="mb-8 h-24 w-24 rounded-full bg-white/20">
-            {/* Logo placeholder */}
-          </div>
           <h2 className="mb-8 text-4xl font-bold leading-tight">
             One lesson at a time
           </h2>
           <p className="mb-4 text-lg">
-            Excelling in math is a super power which every student is capable
-            of acquiring.
+            Every student has the potential to master math and unlock their
+            inner superpower.
           </p>
           <div>
             <p>— Edzoro —</p>
@@ -137,7 +132,7 @@ export default function BookFreeClass() {
                 )}
               />
 
-              <button className="hidden md:block bg-[#f15a29] text-white font-bold py-2 px-6 rounded-full shadow-[0_4px_0_0_#d94e22] hover:shadow-[0_2px_0_0_#d94e22] hover:translate-y-[2px] transition-all duration-200 active:shadow-none active:translate-y-[4px]">
+              <button className="md:block bg-[#f15a29] text-white font-bold py-2 px-6 rounded-full shadow-[0_4px_0_0_#d94e22] hover:shadow-[0_2px_0_0_#d94e22] hover:translate-y-[2px] transition-all duration-200 active:shadow-none active:translate-y-[4px]">
                 Book Free Demo
               </button>
             </form>

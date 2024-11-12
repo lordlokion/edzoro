@@ -1,6 +1,6 @@
 export default function Component() {
   return (
-    <section className="relative overflow bg-[#fff5f2] py-16  mt-6 rounded-xl">
+    <section className="hidden md:block relative overflow bg-[#fff5f2] py-16  mt-6 rounded-xl">
       {/* Decorative paper planes */}
       <svg
         className="absolute left-4 top-4 h-12 w-12 text-[#f15a29]"

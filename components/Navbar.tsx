@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/Input";
 
 type FormData = {
   name: string;
-  email: string; 
+  email: string;
   phone: string;
 };
 
@@ -106,19 +106,14 @@ export default function Navbar() {
           </Link>
           <Link
             className="block text-[#333] hover:text-[#f15a29]"
-            href="/courses"
+            href="/Courses"
           >
             Courses
           </Link>
+
           <Link
             className="block text-[#333] hover:text-[#f15a29]"
-            href="/about"
-          >
-            About Us
-          </Link>
-          <Link
-            className="block text-[#333] hover:text-[#f15a29]"
-            href="/dashboard"
+            href="https://app.edzoro.com"
           >
             Student Dashboard
           </Link>

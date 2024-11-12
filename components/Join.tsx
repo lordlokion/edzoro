@@ -1,5 +1,3 @@
-import Image from "next/image"
-
 export default function Component() {
   return (
     <section className="bg-[#f5f7ff] px-4 py-16">
@@ -113,15 +111,7 @@ export default function Component() {
           </div>
 
           {/* Decorative elements */}
-          <div className="absolute bottom-0 right-0 w-32 md:w-48">
-            <Image
-              src="/placeholder.svg?height=200&width=200"
-              alt=""
-              width={500}
-                height={300}
-              className="w-full"
-            />
-          </div>
+         
           <div className="absolute right-4 top-4">
             <svg
               className="h-6 w-6 text-yellow-300"
