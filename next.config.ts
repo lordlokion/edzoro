@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Self-hosted in a container (see Dockerfile): emit a minimal standalone
+  // server under .next/standalone that runs with `node server.js`.
+  output: "standalone",
 };
 
 export default nextConfig;

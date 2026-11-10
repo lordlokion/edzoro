@@ -1,0 +1,8 @@
+.git
+.next
+node_modules
+deploy
+Dockerfile
+compose.yml
+test-results
+*.md

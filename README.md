@@ -29,8 +29,26 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Deploy (self-hosted, Cloudflare Tunnel)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The site runs on the same NUC as [pte.edzoro.com](https://github.com/lordlokion/pte),
+behind the existing `cloudflared` tunnel — no inbound ports, TLS terminates at
+Cloudflare.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Container** — the `Dockerfile` builds a Next.js standalone server
+   (`output: "standalone"` in `next.config.ts`); `compose.yml` publishes it on
+   `127.0.0.1:8081` (loopback only).
+2. **Cloudflare** — under *Zero Trust → Networks → Tunnels → nuc → Public
+   Hostname*, add `edzoro.com` and `www.edzoro.com`, each with service
+   `http://localhost:8081`. Cloudflare creates the DNS records (the apex CNAME
+   is flattened automatically).
+3. **Boot** — from the server:
+
+   ```bash
+   git clone https://github.com/lordlokion/edzoro /srv/edzoro
+   cd /srv/edzoro && podman compose up -d --build
+   sudo install -m 644 deploy/edzoro.service /etc/systemd/system/edzoro.service
+   sudo systemctl daemon-reload && sudo systemctl enable --now edzoro
+   ```
+
+4. **Updates** — `cd /srv/edzoro && git pull && podman compose up -d --build`.

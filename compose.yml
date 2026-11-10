@@ -1,0 +1,33 @@
+# Production stack for the Edzoro site.
+#
+#   podman compose up -d --build
+#
+# Next.js standalone server published on ${EDZORO_HTTP_PORT:-8081}, loopback
+# only. The public entry point is the Cloudflare tunnel on the NUC, which
+# routes edzoro.com and www.edzoro.com to http://localhost:8081 (the tunnel
+# runs with host networking, so localhost is the host). TLS terminates at
+# Cloudflare.
+
+name: edzoro
+
+services:
+  web:
+    build: .
+    image: edzoro-web
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${EDZORO_HTTP_PORT:-8081}:3000"
+    healthcheck:
+      # The script is deliberately free of spaces: compose re-splits string
+      # healthcheck arguments on whitespace, which would tear a spaced script
+      # into separate argv entries.
+      test:
+        - CMD
+        - node
+        - -e
+        - >-
+          fetch('http://127.0.0.1:3000/').then(r=>process.exit(r.ok?0:1),()=>process.exit(1))
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
