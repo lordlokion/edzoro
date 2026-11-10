@@ -52,3 +52,16 @@ Cloudflare.
    ```
 
 4. **Updates** — `cd /srv/edzoro && git pull && podman compose up -d --build`.
+
+### Live status
+
+| URL | Route | Status |
+|---|---|---|
+| <https://edzoro.com> | tunnel `nuc` → `http://localhost:8081` | ✅ live |
+| <https://www.edzoro.com> | tunnel `nuc` → `http://localhost:8081` | ✅ live |
+| <https://pte.edzoro.com> | tunnel `nuc` → `http://localhost:8080` (other repo) | ✅ live |
+
+DNS notes: the apex and `pte` CNAMEs were auto-created by the tunnel routes;
+`www` had leftover A/AAAA records pointing at Cloudflare IPs (Error 1000) that
+blocked auto-creation — they were deleted and replaced with a proxied CNAME to
+`8ea2f0fd-6356-476c-a6e4-5c7a850808f9.cfargotunnel.com`.
