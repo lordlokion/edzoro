@@ -4,6 +4,14 @@ import Approach from "@/components/Approach";
 import Roadmap from "@/components/Roadmap";
 import Coursetab from "@/components/Coursetab";
 import Footer from "@/components/Footer";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Online Math Courses for Class 1–10 — Live Classes & Curriculum",
+  description:
+    "Explore Edzoro's online math courses for grades 1–10: live interactive classes, chapter-wise practice, and personal mentor support aligned with CBSE, ICSE and state boards.",
+  alternates: { canonical: "https://www.edzoro.com/Courses" },
+};
 
 export default function Home() {
   return (

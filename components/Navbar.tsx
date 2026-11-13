@@ -136,7 +136,7 @@ export default function Navbar() {
 
           <form
             method="POST"
-            action="https://formspree.io/f/xoqggypz"
+            action="https://formspree.io/f/xvzvweyb"
             className="space-y-4"
           >
             <div>
