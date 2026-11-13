@@ -5,11 +5,7 @@ import { Check } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import Reveal from "@/components/Reveal";
-import {
-  WhatsAppBuyButton,
-  waLink,
-  WhatsAppIcon,
-} from "@/components/WhatsApp";
+import { WhatsAppBuyButton } from "@/components/WhatsApp";
 import { Calculator, Pencil } from "@/components/Doodles";
 
 type Plan = {
@@ -268,26 +264,6 @@ export default function Component() {
             child&apos;s grade, pick a plan, and enroll in one tap: your order
             opens directly in WhatsApp chat with our team. No forms, no waiting.
           </p>
-          <div className="inline-flex flex-wrap items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-[#f15a29]/50 bg-gradient-to-r from-[#fff5f2] via-[#fff0d9] to-[#fff5f2] px-6 py-3">
-            <span className="text-xl">🪔</span>
-            <span className="font-bold text-[#2d2d2d]">
-              Diwali Offer: <span className="text-[#f15a29]">50% OFF</span> — pay ₹6,999 / ₹13,999 / ₹21,999 instead of ₹15,999 / ₹28,999 / ₹44,999
-            </span>
-            <span className="rounded-full bg-[#f15a29] px-2.5 py-0.5 text-xs font-bold text-white">
-              Limited seats
-            </span>
-          </div>
-          <a
-            href={waLink(
-              "Hi Edzoro! 👋 I want to enroll my child in your online math course. Which plan do you recommend?",
-            )}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-[#25D366] underline-offset-4 hover:underline"
-          >
-            <WhatsAppIcon className="h-4 w-4" />
-            Not sure which plan? Ask us on WhatsApp — we reply in minutes
-          </a>
         </Reveal>
 
         <div className="mt-10">

@@ -55,9 +55,6 @@ export default function Home() {
                   Try a Free Demo first
                 </a>
               </div>
-              <p className="mt-4 text-sm font-medium text-[#666]">
-                🪔 Diwali: 50% OFF on all plans (₹15,999 / ₹28,999 / ₹44,999) · limited seats
-              </p>
             </div>
           </div>
         </div>
