@@ -44,10 +44,10 @@ export default function Home() {
         <Reveal>
           <Learning2 />
         </Reveal>
+        <CoursesHome />
         <Reveal>
           <ClassVideo />
         </Reveal>
-        <CoursesHome />
         <Reveal>
           <Roadmap />
         </Reveal>

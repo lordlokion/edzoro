@@ -15,7 +15,7 @@ const programs = [
     icon: OpenBook,
     popular: false,
     message:
-      "Hi Edzoro! 👋 I want to buy the *Foundation* math plan (40 sessions, 3 months, ₹6,999) for my child in early grades. Please share the next steps.",
+      "Hi Edzoro! 👋 I want to buy the *Foundation* math plan (40 sessions, 3 months, ₹6,999 with the Diwali 50% OFF offer) for my child in early grades. Please share the next steps.",
   },
   {
     name: "Advanced",
@@ -27,7 +27,7 @@ const programs = [
     icon: IdeaBulb,
     popular: true,
     message:
-      "Hi Edzoro! 👋 I want to buy the *Advanced* math plan (80 sessions, 6 months, ₹13,999) for my child in Grade 4–8. Please share the next steps.",
+      "Hi Edzoro! 👋 I want to buy the *Advanced* math plan (80 sessions, 6 months, ₹13,999 with the Diwali 50% OFF offer) for my child in Grade 4–8. Please share the next steps.",
   },
   {
     name: "Board Mastery",
@@ -39,7 +39,7 @@ const programs = [
     icon: BookStack,
     popular: false,
     message:
-      "Hi Edzoro! 👋 I want to buy the *Board Mastery* math plan (120 sessions, 9 months, ₹21,999) for Class 9–10. Please share the next steps.",
+      "Hi Edzoro! 👋 I want to buy the *Board Mastery* math plan (120 sessions, 9 months, ₹21,999 with the Diwali 50% OFF offer) for Class 9–10. Please share the next steps.",
   },
 ];
 
@@ -58,6 +58,15 @@ export default function CoursesHome() {
           plan and buy directly on WhatsApp — your order opens in a chat, no
           forms to fill.
         </p>
+        <div className="mx-auto mt-5 inline-flex flex-wrap items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-[#f15a29]/50 bg-gradient-to-r from-[#fff5f2] via-[#fff0d9] to-[#fff5f2] px-6 py-3">
+          <span className="text-xl">🪔</span>
+          <span className="font-bold text-[#2d2d2d]">
+            Diwali Offer: <span className="text-[#f15a29]">50% OFF</span> on ₹15,999 / ₹28,999 / ₹44,999
+          </span>
+          <span className="rounded-full bg-[#f15a29] px-2.5 py-0.5 text-xs font-bold text-white">
+            Limited seats
+          </span>
+        </div>
       </Reveal>
 
       <div className="grid gap-6 md:grid-cols-3">
@@ -91,6 +100,9 @@ export default function CoursesHome() {
             <div className="mt-4 flex items-baseline gap-2">
               <span className="text-sm text-gray-400 line-through">₹{p.original}</span>
               <span className="text-3xl font-extrabold text-[#2d2d2d]">₹{p.price}</span>
+              <span className="rounded-full bg-[#f15a29]/10 px-2 py-0.5 text-xs font-bold text-[#f15a29]">
+                50% OFF 🪔
+              </span>
             </div>
             <div className="mt-1 text-sm font-semibold text-[#f15a29]">{p.sessions}</div>
 

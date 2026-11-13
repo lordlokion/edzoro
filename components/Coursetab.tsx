@@ -268,6 +268,15 @@ export default function Component() {
             child&apos;s grade, pick a plan, and enroll in one tap: your order
             opens directly in WhatsApp chat with our team. No forms, no waiting.
           </p>
+          <div className="inline-flex flex-wrap items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-[#f15a29]/50 bg-gradient-to-r from-[#fff5f2] via-[#fff0d9] to-[#fff5f2] px-6 py-3">
+            <span className="text-xl">🪔</span>
+            <span className="font-bold text-[#2d2d2d]">
+              Diwali Offer: <span className="text-[#f15a29]">50% OFF</span> — pay ₹6,999 / ₹13,999 / ₹21,999 instead of ₹15,999 / ₹28,999 / ₹44,999
+            </span>
+            <span className="rounded-full bg-[#f15a29] px-2.5 py-0.5 text-xs font-bold text-white">
+              Limited seats
+            </span>
+          </div>
           <a
             href={waLink(
               "Hi Edzoro! 👋 I want to enroll my child in your online math course. Which plan do you recommend?",
@@ -322,12 +331,15 @@ export default function Component() {
                       >
                         {planStyles[index].emoji} {plan.title}
                       </div>
-                      <div className="flex items-baseline space-x-2">
+                      <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
                         <span className="text-sm text-gray-400 line-through">
                           ₹{plan.originalPrice}
                         </span>
                         <span className="text-3xl font-extrabold text-[#2d2d2d]">
                           ₹{plan.price}
+                        </span>
+                        <span className="rounded-full bg-[#f15a29]/10 px-2 py-0.5 text-xs font-bold text-[#f15a29]">
+                          50% OFF 🪔
                         </span>
                       </div>
                       <div className="mt-1 flex items-center space-x-2 text-sm text-[#666]">
@@ -354,7 +366,7 @@ export default function Component() {
 
                       <div className="mt-6 flex flex-col gap-2 border-t border-dashed border-[#f15a29]/25 pt-4">
                         <WhatsAppBuyButton
-                          message={`Hi Edzoro! 👋 I want to buy the *${plan.title}* online math course (${plan.sessions}, ${plan.duration}, ₹${plan.price}) for Grade ${grade}. Please share the next steps.`}
+                          message={`Hi Edzoro! 👋 I want to buy the *${plan.title}* online math course (${plan.sessions}, ${plan.duration}, ₹${plan.price} — Diwali 50% OFF) for Grade ${grade}. Please share the next steps.`}
                           className="w-full"
                         />
                         <Link
@@ -372,7 +384,13 @@ export default function Component() {
 
           <Reveal delay={150} className="mt-8 text-center text-sm text-[#666]">
             🔒 Enrollment is confirmed personally by our team on WhatsApp — you
-            can ask anything before you pay. EMI options available.
+            can ask anything before you pay. EMI options available.{" "}
+            <a
+              href="#book-demo"
+              className="font-semibold text-[#f15a29] underline-offset-4 hover:underline"
+            >
+              Prefer to try a free demo first?
+            </a>
           </Reveal>
         </div>
       </div>

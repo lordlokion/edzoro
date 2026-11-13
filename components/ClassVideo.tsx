@@ -3,8 +3,9 @@
 import * as React from "react";
 import Reveal from "./Reveal";
 import { Sparkle, OpenBook } from "./Doodles";
+import { waLink } from "./WhatsApp";
 
-const VIDEO_ID = "mGAZyLiRpZw";
+const VIDEO_ID = "BZABZR_HuKY";
 
 export default function ClassVideo() {
   const [play, setPlay] = React.useState(false);
@@ -23,7 +24,7 @@ export default function ClassVideo() {
           See How an Edzoro Class <span className="text-[#f15a29]">Feels</span>
         </h2>
         <p className="mx-auto mt-3 max-w-xl text-gray-300">
-          A free 10-day live math marathon from our YouTube channel — the same
+          A real Edzoro lesson on Perimeter &amp; Area — the same interactive
           energy your child gets in every session.
         </p>
       </Reveal>
@@ -59,11 +60,28 @@ export default function ClassVideo() {
                 </svg>
               </span>
               <span className="absolute bottom-4 left-4 rounded-full bg-black/70 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
-                FREE 10-Day Math Marathon · Class 10
+                Real class: Perimeter &amp; Area · Edzoro Live
               </span>
             </button>
           )}
         </div>
+      </Reveal>
+
+      <Reveal delay={250} className="relative mt-8 flex flex-wrap items-center justify-center gap-4">
+        <a
+          href="#book-demo"
+          className="inline-flex items-center gap-2 rounded-full bg-[#f15a29] px-7 py-3 font-bold text-white shadow-[0_5px_0_0_#d94e22] transition-all duration-200 hover:shadow-[0_2px_0_0_#d94e22] hover:translate-y-[3px] active:shadow-none active:translate-y-[5px]"
+        >
+          Liked it? Book a Free Demo →
+        </a>
+        <a
+          href={waLink("Hi Edzoro! 👋 I just watched your class video and want to know more about the math courses.")}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 rounded-full border-2 border-white/25 px-7 py-3 font-bold text-white transition-colors hover:border-[#25D366] hover:text-[#25D366]"
+        >
+          Ask us on WhatsApp
+        </a>
       </Reveal>
     </section>
   );

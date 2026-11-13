@@ -4,6 +4,7 @@ import Approach from "@/components/Approach";
 import Roadmap from "@/components/Roadmap";
 import Coursetab from "@/components/Coursetab";
 import Footer from "@/components/Footer";
+import Form from "@/components/Form";
 import { WhatsAppFloatingButton, WhatsAppBuyButton } from "@/components/WhatsApp";
 import type { Metadata } from "next";
 
@@ -42,10 +43,21 @@ export default function Home() {
               <p className="mb-8 text-xl text-[#666] md:text-2xl">
                 Guiding students to success in math — one subject, taught brilliantly.
               </p>
-              <WhatsAppBuyButton
-                size="lg"
-                message="Hi Edzoro! 👋 I want to buy your online math course. Please share the plans and next steps."
-              />
+              <div className="flex flex-wrap items-center justify-center gap-4">
+                <WhatsAppBuyButton
+                  size="lg"
+                  message="Hi Edzoro! 👋 I want to buy your online math course (Diwali 50% OFF). Please share the plans and next steps."
+                />
+                <a
+                  href="#book-demo"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#2d2d2d]/15 bg-white/80 px-7 py-3.5 text-lg font-bold text-[#2d2d2d] backdrop-blur-sm transition-colors hover:border-[#f15a29] hover:text-[#f15a29]"
+                >
+                  Try a Free Demo first
+                </a>
+              </div>
+              <p className="mt-4 text-sm font-medium text-[#666]">
+                🪔 Diwali: 50% OFF on all plans (₹15,999 / ₹28,999 / ₹44,999) · limited seats
+              </p>
             </div>
           </div>
         </div>
@@ -55,6 +67,20 @@ export default function Home() {
 
         <div id="curriculam-section">
           <Curriculam />
+        </div>
+
+        {/* Demo booking — the natural next step after browsing */}
+        <div className="relative mt-4 py-6">
+          <div className="mx-auto mb-6 max-w-6xl px-4 text-center">
+            <h2 className="text-3xl font-bold text-[#2d2d2d] md:text-4xl">
+              Not ready to buy? <span className="text-[#f15a29]">Start with a free demo.</span>
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl text-[#666]">
+              Watch your child solve real problems with our tutors in a 30-minute
+              live class — then decide. Zero pressure, zero payment.
+            </p>
+          </div>
+          <Form />
         </div>
         <Footer />
       </main>

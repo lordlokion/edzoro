@@ -3,6 +3,7 @@
 import * as React from "react";
 import { Check, Rocket, School, Sparkles } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { WhatsAppBuyButton } from "@/components/WhatsApp";
 
 const curriculumData = {
   apprenticeNinja: {
@@ -299,6 +300,27 @@ export default function Component() {
       </div>
 
       {/* Book Demo Button */}
+      <div className="mt-6 flex flex-col items-center gap-4 rounded-3xl bg-[#2d2d2d] p-8 text-center text-white relative overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 bg-dotgrid opacity-15" />
+        <h3 className="relative text-2xl font-bold md:text-3xl">
+          Seen the curriculum? <span className="text-[#ff8a5c]">Now lock the Diwali price.</span>
+        </h3>
+        <p className="relative text-sm text-white/70">
+          Enroll on WhatsApp in one tap — or try a free demo class first and decide after.
+        </p>
+        <div className="relative flex flex-wrap items-center justify-center gap-3">
+          <WhatsAppBuyButton
+            size="lg"
+            message="Hi Edzoro! 👋 I've seen the curriculum and I want to enroll my child in your online math course (Diwali 50% OFF). Please share the next steps."
+          />
+          <a
+            href="#book-demo"
+            className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/25 px-7 py-3.5 text-lg font-bold text-white transition-colors hover:border-[#f15a29] hover:text-[#ff8a5c]"
+          >
+            Book a Free Demo
+          </a>
+        </div>
+      </div>
     </div>
   );
 }
