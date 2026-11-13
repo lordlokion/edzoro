@@ -11,26 +11,26 @@ export default function ClassVideo() {
   const [play, setPlay] = React.useState(false);
 
   return (
-    <section className="relative mx-auto mt-8 max-w-6xl overflow-hidden rounded-[2rem] bg-[#2d2d2d] px-4 py-14 text-white md:px-12">
-      <div className="pointer-events-none absolute inset-0 bg-dotgrid opacity-15" />
-      <OpenBook className="pointer-events-none absolute -left-3 top-8 h-20 w-20 opacity-10" />
-      <Sparkle className="pointer-events-none absolute right-10 top-10 h-5 w-5 animate-wiggle opacity-50" />
+    <section className="relative mx-auto mt-8 max-w-6xl overflow-hidden rounded-[2rem] bg-[#fff5f2] px-4 py-14 text-[#2d2d2d] md:px-12">
+      <div className="pointer-events-none absolute inset-0 bg-dotgrid opacity-50 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
+      <OpenBook className="pointer-events-none absolute -left-3 top-8 h-20 w-20 opacity-15" />
+      <Sparkle className="pointer-events-none absolute right-10 top-10 h-5 w-5 animate-wiggle opacity-70" />
 
       <Reveal className="relative mb-10 text-center">
-        <span className="mb-4 inline-block rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-sm font-semibold text-[#ff8a5c]">
+        <span className="mb-4 inline-block rounded-full bg-white px-4 py-1.5 text-sm font-semibold text-[#f15a29] shadow-sm">
           🎬 Watch a real class
         </span>
         <h2 className="text-3xl font-bold md:text-4xl">
-          See How an Edzoro Class <span className="text-[#f15a29]">Feels</span>
+          See How an Edzoro Class <span className="squiggle-underline text-[#f15a29]">Feels</span>
         </h2>
-        <p className="mx-auto mt-3 max-w-xl text-gray-300">
+        <p className="mx-auto mt-3 max-w-xl text-[#666]">
           A real Edzoro lesson on Perimeter &amp; Area — the same interactive
           energy your child gets in every session.
         </p>
       </Reveal>
 
       <Reveal direction="zoom" delay={150} className="relative mx-auto max-w-3xl">
-        <div className="overflow-hidden rounded-2xl border-4 border-white/10 shadow-[0_24px_60px_-20px_rgba(0,0,0,0.6)] transition-transform duration-500 hover:scale-[1.01]">
+        <div className="overflow-hidden rounded-2xl border-4 border-white bg-white p-3 shadow-[0_24px_60px_-20px_rgba(45,45,45,0.35)] transition-transform duration-500 hover:scale-[1.01]">
           {play ? (
             <iframe
               className="aspect-video w-full"
@@ -59,7 +59,7 @@ export default function ClassVideo() {
                   <path d="M8 5v14l11-7z" />
                 </svg>
               </span>
-              <span className="absolute bottom-4 left-4 rounded-full bg-black/70 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
+              <span className="absolute bottom-4 left-4 rounded-full bg-[#2d2d2d]/85 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
                 Real class: Perimeter &amp; Area · Edzoro Live
               </span>
             </button>
@@ -78,7 +78,7 @@ export default function ClassVideo() {
           href={waLink("Hi Edzoro! 👋 I just watched your class video and want to know more about the math courses.")}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-full border-2 border-white/25 px-7 py-3 font-bold text-white transition-colors hover:border-[#25D366] hover:text-[#25D366]"
+          className="inline-flex items-center gap-2 rounded-full border-2 border-[#2d2d2d]/15 bg-white px-7 py-3 font-bold text-[#2d2d2d] transition-colors hover:border-[#25D366] hover:text-[#25D366]"
         >
           Ask us on WhatsApp
         </a>
