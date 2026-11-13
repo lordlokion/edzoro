@@ -1,4 +1,6 @@
 import { Trophy, Zap, Award, BookOpen, Video } from "lucide-react";
+import Reveal from "./Reveal";
+import { OpenBook, IdeaBulb, Sparkle } from "./Doodles";
 
 export default function Component() {
   return (
@@ -6,7 +8,8 @@ export default function Component() {
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-8 lg:grid-cols-2">
           {/* Impact Section */}
-          <div className="rounded-3xl bg-[#f5f7ff] p-8">
+          <Reveal direction="left" className="rounded-3xl bg-[#f5f7ff] p-8 relative overflow-hidden card-lift">
+            <OpenBook className="pointer-events-none absolute -right-3 -top-3 h-20 w-20 opacity-15" />
             <h2 className="mb-4 text-3xl font-bold">
               Our <span className="text-[#f15a29]">Impact</span>
             </h2>
@@ -35,16 +38,16 @@ export default function Component() {
             </div>
 
             {/* Statistics Grid */}
-            <div className="mb-8 grid grid-cols-3 gap-4 text-center">
-              <div>
+            <div className="mb-8 grid grid-cols-3 gap-3 text-center">
+              <div className="card-lift rounded-2xl bg-white/70 py-4">
                 <div className="text-2xl font-bold text-[#f15a29]">50,000+</div>
                 <div className="text-sm text-[#666]">Teaching Hours</div>
               </div>
-              <div>
+              <div className="card-lift rounded-2xl bg-white/70 py-4">
                 <div className="text-2xl font-bold text-[#f15a29]">10+</div>
                 <div className="text-sm text-[#666]">Countries Presence</div>
               </div>
-              <div>
+              <div className="card-lift rounded-2xl bg-white/70 py-4">
                 <div className="text-2xl font-bold text-[#f15a29]">100+</div>
                 <div className="text-sm text-[#666]">Expert Teachers</div>
               </div>
@@ -60,10 +63,11 @@ export default function Component() {
                 Data-Driven Insights Shaping Our Teaching Methods{" "}
               </div>
             </div>
-          </div>
+          </Reveal>
 
           {/* Founder Section */}
-          <div className="rounded-3xl bg-[#fff5f2] p-8">
+          <Reveal direction="right" className="rounded-3xl bg-[#fff5f2] p-8 relative overflow-hidden card-lift">
+            <IdeaBulb className="pointer-events-none absolute -right-2 -top-2 h-20 w-20 opacity-20" />
             <div className="relative">
               <div className="mb-8">
                 <div className="text-sm text-[#666]">
@@ -92,7 +96,7 @@ export default function Component() {
                 </div>
                 <div className="flex items-center space-x-3">
                   <Award className="h-5 w-5 text-[#f15a29]" />
-                  <span>Customized Learning Plans</span>
+                  <span>Doubt-Solving Sessions</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <BookOpen className="h-5 w-5 text-[#f15a29]" />
@@ -104,31 +108,16 @@ export default function Component() {
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
-
-        {/* BBC Quote */}
-        <div className="mt-8 rounded-3xl bg-[#2d2d2d] p-6 text-center text-white">
-          <div className="mb-4">
-            <svg
-              className="mx-auto h-12 w-auto"
-              viewBox="0 0 84 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect width="84" height="24" fill="white" />
-              <text
-                x="50%"
-                y="50%"
-                dominantBaseline="middle"
-                textAnchor="middle"
-                fill="black"
-                fontSize="16"
-                fontWeight="bold"
-              >f(x)=∣x∣
-
-              </text>
-            </svg>
+        {/* Quote strip */}
+        <Reveal delay={150} className="mt-8 rounded-3xl bg-[#2d2d2d] p-6 text-center text-white relative overflow-hidden">
+          <Sparkle className="pointer-events-none absolute left-8 top-6 h-5 w-5 animate-wiggle" />
+          <Sparkle className="pointer-events-none absolute right-8 bottom-6 h-4 w-4 animate-wiggle" style={{ animationDelay: "-1.5s" }} />
+          <div className="mb-4 flex justify-center">
+            <span className="rounded-xl border-2 border-[#f15a29]/60 px-6 py-2 text-2xl font-bold tracking-wider text-[#ff8a5c]">
+              f(x) = |x|
+            </span>
           </div>
           <div className="flex items-center justify-center space-x-4">
             <Zap className="h-6 w-6 text-[#f15a29]" />
@@ -137,7 +126,7 @@ export default function Component() {
             </p>
             <Zap className="h-6 w-6 text-[#f15a29]" />
           </div>
-        </div>
+        </Reveal>
       </div>
     </div>
   );

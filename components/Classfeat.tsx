@@ -3,6 +3,8 @@
 import * as React from "react"
 import { cn } from "@/lib/utils"
 import Image from 'next/image'
+import Reveal from "./Reveal"
+import { Pencil } from "./Doodles"
 
 const tabsData = [
   {
@@ -35,16 +37,25 @@ export default function Component() {
   const [activeTab, setActiveTab] = React.useState(tabsData[0].id)
 
   return (
-    <section className="py-16 max-w-6xl mx-auto mt-8 rounded-xl">
+    <section className="mx-auto mt-8 max-w-6xl rounded-[2rem] py-16">
       <div className="mx-auto max-w-6xl px-4">
-        <h2 className="mb-12 text-center text-3xl font-bold text-[#2d2d2d] md:text-4xl">
-          How Edzoro Makes Math <span className="text-[#f15a29]">Fun and Engaging</span>
-        </h2>
+        <Reveal className="mb-12 text-center">
+          <span className="mb-4 inline-block rounded-full bg-[#fff5f2] px-4 py-1.5 text-sm font-semibold text-[#f15a29] shadow-sm">
+            🎒 What makes classes fun
+          </span>
+          <h2 className="text-3xl font-bold text-[#2d2d2d] md:text-4xl">
+            How Edzoro Makes Math{" "}
+            <span className="squiggle-underline text-[#f15a29]">Fun and Engaging</span>
+          </h2>
+        </Reveal>
 
         <div className="grid gap-8 md:grid-cols-2 md:items-start">
           {/* Left side - Image */}
-          <div className="relative">
-            <div className="relative rounded-2xl p-4">
+          <Reveal direction="left" className="relative">
+            <div className="pointer-events-none absolute -left-4 -top-4 z-10 w-14 animate-float-slow">
+              <Pencil />
+            </div>
+            <div className="relative rounded-2xl border-4 border-white bg-white p-3 shadow-[0_18px_40px_-18px_rgba(45,45,45,0.35)] transition-transform duration-500 hover:rotate-[-1.2deg] hover:scale-[1.01]">
               <Image
                 src={tabsData.find(tab => tab.id === activeTab)?.image || ''}
                 alt={`Demonstrating ${tabsData.find(tab => tab.id === activeTab)?.title}`}
@@ -54,16 +65,20 @@ export default function Component() {
                 className="rounded-xl"
               />
             </div>
-          </div>
+          </Reveal>
 
           {/* Right side - Features */}
-          <div className="space-y-6">
-            {tabsData.map((tab) => (
-              <div
+          <div className="space-y-5">
+            {tabsData.map((tab, i) => (
+              <Reveal
                 key={tab.id}
+                direction="right"
+                delay={i * 90}
                 className={cn(
-                  "rounded-xl p-4 shadow-sm backdrop-blur-sm cursor-pointer transition-colors",
-                  activeTab === tab.id ? "bg-white/80" : "bg-white hover:bg-white/70"
+                  "rounded-2xl p-4 shadow-sm backdrop-blur-sm cursor-pointer transition-all card-lift",
+                  activeTab === tab.id
+                    ? "border-2 border-[#f15a29]/60 bg-white"
+                    : "border-2 border-transparent bg-white/80 hover:bg-white"
                 )}
                 onClick={() => setActiveTab(tab.id)}
                 role="tab"
@@ -72,8 +87,8 @@ export default function Component() {
               >
                 <div className="flex items-start gap-4">
                   <div className={cn(
-                    "flex h-6 w-6 items-center justify-center rounded-full",
-                    activeTab === tab.id ? "bg-blue-500 text-white" : "border-2 border-gray-400"
+                    "mt-1 flex h-6 w-6 items-center justify-center rounded-full transition-colors",
+                    activeTab === tab.id ? "bg-[#f15a29] text-white" : "border-2 border-gray-300"
                   )}>
                     {activeTab === tab.id && (
                       <svg
@@ -98,7 +113,7 @@ export default function Component() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>

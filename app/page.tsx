@@ -12,25 +12,50 @@ import Slider from "../components/Slider";
 import Join from "../components/Join";
 import Parentstestimonial from "../components/Parentstestimonial";
 import Footer from "../components/Footer";
+import Reveal from "../components/Reveal";
 
 
 export default function Home() {
   return (
-    <div className="min-h-screen ">
+    <div className="min-h-screen bg-[#faf9f9]">
       <Navbar />
-      <main> 
-        <Hero />
-        <Impact />
-        <Form />
-        <Approach />
-        <Classfeat />
-        <Learning />
-        <Learning2 />
-        <Coursetab />
-        <Roadmap />
-        <Slider />
-        <Join />
-        <Parentstestimonial />
+      <main>
+        <div className="pt-2">
+          <Hero />
+        </div>
+        <Reveal>
+          <Impact />
+        </Reveal>
+        <Reveal>
+          <Form />
+        </Reveal>
+        <Reveal>
+          <Approach />
+        </Reveal>
+        <Reveal>
+          <Classfeat />
+        </Reveal>
+        <Reveal>
+          <Learning />
+        </Reveal>
+        <Reveal>
+          <Learning2 />
+        </Reveal>
+        <Reveal>
+          <Coursetab />
+        </Reveal>
+        <Reveal>
+          <Roadmap />
+        </Reveal>
+        <Reveal>
+          <Slider />
+        </Reveal>
+        <Reveal>
+          <Join />
+        </Reveal>
+        <Reveal>
+          <Parentstestimonial />
+        </Reveal>
         <Footer />
       </main>
     </div>

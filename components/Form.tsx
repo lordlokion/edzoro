@@ -72,7 +72,10 @@ export default function BookFreeClass() {
   }
 
   return (
-    <div className="overflow-hidden rounded-3xl bg-white shadow-lg mx-auto max-w-6xl">
+    <div
+      id="book-demo"
+      className="mx-auto max-w-6xl scroll-mt-24 overflow-hidden rounded-3xl bg-white shadow-lg"
+    >
       <div className="grid md:grid-cols-2">
         {/* Left Panel */}
         <div className="relative bg-[#f15a29] p-8 text-white md:p-12">

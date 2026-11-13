@@ -105,15 +105,20 @@ export default function Component() {
   }, []);
 
   return (
-    <div className="overflow-hidden rounded-3xl bg-[#2d2d2d] px-8 py-12 text-white md:px-12 mx-auto max-w-6xl mt-8">
-      <div className="mx-auto max-w-6xl">
+    <div className="relative mx-auto mt-8 max-w-6xl overflow-hidden rounded-[2rem] bg-[#2d2d2d] px-8 py-12 text-white md:px-12">
+      <div className="pointer-events-none absolute inset-0 bg-dotgrid opacity-15" />
+      <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 animate-blob rounded-full bg-[#f15a29]/15" />
+      <div className="relative mx-auto max-w-6xl">
         {/* Header */}
         <div className="mb-12 text-center">
+          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-sm font-semibold text-[#ff8a5c]">
+            ✨ Powered by the Edzoro AI ecosystem
+          </span>
           <h2 className="mb-2 text-3xl font-bold md:text-4xl">
             Next-Gen Learning
           </h2>
-          <p className="text-lg">
-            With <span className="text-[#f15a29]">Edzoro AI</span> Ecosystem
+          <p className="text-lg text-gray-300">
+            With <span className="font-semibold text-[#f15a29]">Edzoro AI</span> Ecosystem
           </p>
         </div>
 

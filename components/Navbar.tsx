@@ -30,27 +30,33 @@ export default function Navbar() {
   }, [notification]);
 
   return (
-    <nav className="py-4 rounded-xl mt-4 mb-4 bg-[#fff5f2] px-6 mx-auto max-w-6xl">
+    <nav className="sticky top-3 z-40 mx-auto mb-4 max-w-6xl rounded-2xl border border-white/60 bg-[#fff5f2]/80 px-6 py-3 shadow-[0_8px_30px_-12px_rgba(241,90,41,0.25)] backdrop-blur-md">
       <div className="flex items-center justify-between">
-        <div className="flex items-center">
-          <Link href="/" className="text-2xl font-bold text-[#333]">
+        <div className="flex items-center gap-2">
+          <svg className="h-8 w-8" viewBox="0 0 64 64" aria-hidden>
+            <rect x="14" y="8" width="36" height="48" rx="5" fill="#faf9f9" stroke="#2d2d2d" strokeWidth="3" />
+            <text x="30" y="40" textAnchor="middle" fontSize="22" fontWeight="bold" fill="#f15a29" fontFamily="Georgia, serif">Σ</text>
+            <rect x="42" y="8" width="8" height="48" rx="3" fill="#f15a29" />
+          </svg>
+          <Link href="/" className="text-2xl font-extrabold tracking-tight text-[#2d2d2d]">
             EDZORO
           </Link>
         </div>
 
-        <div className="hidden md:flex space-x-6">
-          <Link className="text-[#333] hover:text-[#f15a29]" href="/">
-            Home
-          </Link>
-          <Link className="text-[#333] hover:text-[#f15a29]" href="/Courses">
-            Courses
-          </Link>
-          <Link
-            className="text-[#333] hover:text-[#f15a29]"
-            href="https://app.edzoro.com/"
-          >
-            Student Dashboard
-          </Link>
+        <div className="hidden items-center gap-1 md:flex">
+          {[
+            { href: "/", label: "Home" },
+            { href: "/Courses", label: "Courses" },
+            { href: "https://app.edzoro.com/", label: "Student Dashboard" },
+          ].map((l) => (
+            <Link
+              key={l.label}
+              className="rounded-full px-4 py-2 font-medium text-[#2d2d2d] transition-colors hover:bg-[#f15a29]/10 hover:text-[#f15a29]"
+              href={l.href}
+            >
+              {l.label}
+            </Link>
+          ))}
         </div>
 
         <button
