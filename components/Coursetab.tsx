@@ -2,20 +2,27 @@
 
 import * as React from "react";
 import { Check } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
-
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
+import Reveal from "@/components/Reveal";
+import {
+  WhatsAppBuyButton,
+  waLink,
+  WhatsAppIcon,
+} from "@/components/WhatsApp";
+import { Calculator, Pencil } from "@/components/Doodles";
 
-const pricingData = {
+type Plan = {
+  title: string;
+  price: string;
+  originalPrice: string;
+  duration: string;
+  sessions: string;
+  features: string[];
+  popular?: boolean;
+};
+
+const pricingData: Record<string, Plan[]> = {
   "UKG-1": [
     {
       title: "Apprentice Ninja",
@@ -145,7 +152,7 @@ const pricingData = {
       features: [
         "Intermediate Algebra & Geometry",
         "Advanced Word Problems",
-        "Basic Calculus Concepts",
+        "Pre-Algebra Foundations",
       ],
     },
     {
@@ -174,7 +181,7 @@ const pricingData = {
       popular: true,
     },
   ],
-  "9+": [
+  "9-10": [
     {
       title: "Apprentice Ninja",
       price: "6,999",
@@ -182,9 +189,9 @@ const pricingData = {
       duration: "3 months",
       sessions: "40 Sessions",
       features: [
-        "Advanced Speed Math",
-        "Calculus & Advanced Algebra",
-        "Mathematical Modelling & Applications",
+        "Board-Exam Foundations",
+        "Algebra & Geometry Strengthening",
+        "Chapter-wise Practice",
       ],
     },
     {
@@ -194,9 +201,9 @@ const pricingData = {
       duration: "6 months",
       sessions: "80 Sessions",
       features: [
-        "Mastery in Differential Equations",
-        "Complex Problem Solving & Innovation",
-        "Advanced Mathematical Theories",
+        "Complete Board Syllabus Coverage",
+        "Previous-Year Paper Practice",
+        "Exam Strategy & Time Management",
       ],
     },
     {
@@ -206,139 +213,167 @@ const pricingData = {
       duration: "9 months",
       sessions: "120 Sessions",
       features: [
-        "Mathematical Research & Innovation",
-        "Real-world Mathematical Application",
-        "Advanced Mathematical Programming",
+        "Full Syllabus + Revision Cycles",
+        "Sample-Paper Mock Tests",
+        "1-on-1 Doubt Sessions",
       ],
       popular: true,
     },
   ],
 };
 
+const planStyles = [
+  {
+    card: "bg-white border-[#f15a29]/15",
+    check: "text-[#f15a29]",
+    badge: "bg-[#f5f7ff] text-[#5b6cff]",
+    emoji: "🌱",
+  },
+  {
+    card: "bg-white border-[#f15a29]/15",
+    check: "text-[#f15a29]",
+    badge: "bg-[#fff5f2] text-[#f15a29]",
+    emoji: "⚡",
+  },
+  {
+    card: "bg-white border-2 border-[#f15a29] shadow-[0_18px_40px_-18px_rgba(241,90,41,0.4)]",
+    check: "text-[#f15a29]",
+    badge: "bg-[#f15a29] text-white",
+    emoji: "🏆",
+  },
+];
+
 export default function Component() {
-  const [activeTab, setActiveTab] = React.useState("UKG-1");
+  const [activeTab, setActiveTab] = React.useState("4-6");
 
   return (
-    <section className="py-16 relative overflow-hidden max-w-6xl mx-auto border-2 border-black mt-6 rounded-xl">
-      <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center space-y-4 text-center">
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-            Our Course <span className="text-[#f15a29]">Modules</span>
-          </h2>
-          <p className="mx-auto text-gray-600 md:text-lg/relaxed">
-            At Edzoro, we design our course Modules with care and precision to
-            meet the needs of students across all grade levels. Each learning
-            experience is tailored to match a childs individual abilities and
-            pace, ensuring that every student thrives. Our interactive and
-            innovative programs make math enjoyable and engaging, fostering
-            academic success and instilling lasting confidence in their math
-            skills.
-          </p>
-        </div>
+    <section
+      id="buy"
+      className="relative mx-auto mt-6 max-w-6xl scroll-mt-24 overflow-hidden rounded-[2rem] py-16"
+    >
+      <div className="pointer-events-none absolute inset-0 bg-dotgrid opacity-40 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
+      <Calculator className="pointer-events-none absolute -right-2 top-8 h-16 w-16 opacity-15" />
+      <Pencil className="pointer-events-none absolute -left-2 bottom-10 h-16 w-16 opacity-15" />
 
-        <div className="mt-8">
-          <h3 className="mb-4 text-center text-lg font-medium">Select Class</h3>
-          <Tabs value={activeTab} className="mx-auto max-w-4xl">
-            <div className="mb-8 flex justify-center">
-              <div className="inline-flex rounded-full border-2 border-[#f15a29] p-1">
-                {Object.keys(pricingData).map((tab) => (
-                  <button
-                    key={tab}
-                    onClick={() => setActiveTab(tab)}
-                    className={cn(
-                      "px-4 py-2 text-sm font-medium rounded-full transition-colors",
-                      activeTab === tab
-                        ? "bg-[#f15a29] text-white"
-                        : "text-[#f15a29] hover:bg-[#f15a29]/10"
-                    )}
-                  >
-                    {tab}
-                  </button>
-                ))}
-              </div>
+      <div className="relative container px-4 md:px-6">
+        <Reveal className="flex flex-col items-center space-y-4 text-center">
+          <span className="inline-block rounded-full bg-[#fff5f2] px-4 py-1.5 text-sm font-semibold text-[#f15a29] shadow-sm">
+            🧮 Online Mathematics Course · Grade UKG–10
+          </span>
+          <h2 className="text-3xl font-bold tracking-tight text-[#2d2d2d] sm:text-4xl md:text-5xl">
+            Pick a plan. <span className="squiggle-underline text-[#f15a29]">Buy on WhatsApp</span>.
+          </h2>
+          <p className="mx-auto max-w-2xl text-[#666] md:text-lg">
+            One subject — Mathematics — done brilliantly. Choose your
+            child&apos;s grade, pick a plan, and enroll in one tap: your order
+            opens directly in WhatsApp chat with our team. No forms, no waiting.
+          </p>
+          <a
+            href={waLink(
+              "Hi Edzoro! 👋 I want to enroll my child in your online math course. Which plan do you recommend?",
+            )}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-[#25D366] underline-offset-4 hover:underline"
+          >
+            <WhatsAppIcon className="h-4 w-4" />
+            Not sure which plan? Ask us on WhatsApp — we reply in minutes
+          </a>
+        </Reveal>
+
+        <div className="mt-10">
+          <Reveal className="mb-8 flex justify-center">
+            <div className="inline-flex flex-wrap justify-center gap-1 rounded-full border-2 border-[#f15a29] p-1">
+              {Object.keys(pricingData).map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={cn(
+                    "rounded-full px-4 py-2 text-sm font-medium transition-colors",
+                    activeTab === tab
+                      ? "bg-[#f15a29] text-white"
+                      : "text-[#f15a29] hover:bg-[#f15a29]/10",
+                  )}
+                >
+                  {tab === "UKG-1" ? "Grade UKG–1" : `Grade ${tab}`}
+                </button>
+              ))}
             </div>
-            {Object.entries(pricingData).map(([grade, plans]) => (
-              <TabsContent key={grade} value={grade} className="mt-8">
-                <div className="grid gap-6 md:grid-cols-3">
+          </Reveal>
+
+          {Object.entries(pricingData).map(
+            ([grade, plans]) =>
+              activeTab === grade && (
+                <div key={grade} className="grid gap-6 pt-4 md:grid-cols-3">
                   {plans.map((plan, index) => (
-                    <Card
-                      key={index}
-                      className={`relative overflow-hidden ${
-                        index === 0
-                          ? "bg-red-50 border-red-100"
-                          : index === 1
-                          ? "bg-yellow-50 border-yellow-100"
-                          : "bg-blue-50 border-blue-100"
-                      }`}
+                    <Reveal
+                      key={plan.title}
+                      delay={index * 110}
+                      direction="zoom"
+                      className={`card-lift relative flex flex-col overflow-hidden rounded-3xl border p-6 ${planStyles[index].card}`}
                     >
                       {plan.popular && (
-                        <div className="absolute right-4 top-4 rounded-full bg-[#f15a29] px-3 py-1 text-xs text-white">
+                        <div className="absolute right-4 top-4 rounded-full bg-[#f15a29] px-3 py-1 text-xs font-semibold text-white">
                           Most popular
                         </div>
                       )}
-                      <CardHeader>
-                        <CardTitle>{plan.title}</CardTitle>
-                        <div className="flex items-baseline space-x-2">
-                          <span className="text-sm text-gray-500 line-through">
-                            {plan.originalPrice} INR
-                          </span>
-                          <span className="text-3xl font-bold">
-                            {plan.price} INR
-                          </span>
-                        </div>
-                      </CardHeader>
-                      <CardContent>
-                        <div className="space-y-4">
-                          <div className="flex items-center space-x-2 text-sm">
-                            <span className="font-medium">{plan.sessions}</span>
-                            <span className="text-gray-500">|</span>
-                            <span className="font-medium">{plan.duration}</span>
-                          </div>
-                          <div className="space-y-2">
-                            <h4 className="font-medium">Your learnings:</h4>
-                            <ul className="space-y-2">
-                              {plan.features.map((feature, featureIndex) => (
-                                <li
-                                  key={featureIndex}
-                                  className="flex items-center space-x-2"
-                                >
-                                  <Check
-                                    className={`h-4 w-4 ${
-                                      index === 0
-                                        ? "text-red-500"
-                                        : index === 1
-                                        ? "text-yellow-500"
-                                        : "text-blue-500"
-                                    }`}
-                                  />
-                                  <span>{feature}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        </div>
-                      </CardContent>
-                      <CardFooter>
-                        <Link href="/Courses/#curriculam-section">
-                          <Button
-                            className={`w-full ${
-                              index === 0
-                                ? "bg-red-100 text-red-600 hover:bg-red-200"
-                                : index === 1
-                                ? "bg-yellow-100 text-yellow-600 hover:bg-yellow-200"
-                                : "bg-blue-100 text-blue-600 hover:bg-blue-200"
-                            }`}
-                          >
-                            View Curriculum
-                          </Button>
+                      <div
+                        className={`mb-3 inline-flex w-fit items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold ${planStyles[index].badge}`}
+                      >
+                        {planStyles[index].emoji} {plan.title}
+                      </div>
+                      <div className="flex items-baseline space-x-2">
+                        <span className="text-sm text-gray-400 line-through">
+                          ₹{plan.originalPrice}
+                        </span>
+                        <span className="text-3xl font-extrabold text-[#2d2d2d]">
+                          ₹{plan.price}
+                        </span>
+                      </div>
+                      <div className="mt-1 flex items-center space-x-2 text-sm text-[#666]">
+                        <span className="font-semibold">{plan.sessions}</span>
+                        <span>|</span>
+                        <span className="font-semibold">{plan.duration}</span>
+                      </div>
+
+                      <div className="mt-5 space-y-2">
+                        <h4 className="text-sm font-bold uppercase tracking-wide text-[#2d2d2d]">
+                          Your child learns
+                        </h4>
+                        <ul className="space-y-2">
+                          {plan.features.map((feature) => (
+                            <li key={feature} className="flex items-start space-x-2">
+                              <Check
+                                className={`mt-0.5 h-4 w-4 shrink-0 ${planStyles[index].check}`}
+                              />
+                              <span className="text-sm text-[#444]">{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="mt-6 flex flex-col gap-2 border-t border-dashed border-[#f15a29]/25 pt-4">
+                        <WhatsAppBuyButton
+                          message={`Hi Edzoro! 👋 I want to buy the *${plan.title}* online math course (${plan.sessions}, ${plan.duration}, ₹${plan.price}) for Grade ${grade}. Please share the next steps.`}
+                          className="w-full"
+                        />
+                        <Link
+                          href="/Courses/#curriculam-section"
+                          className="block w-full rounded-full border-2 border-[#2d2d2d]/10 py-2.5 text-center text-sm font-semibold text-[#2d2d2d] transition-colors hover:border-[#f15a29] hover:text-[#f15a29]"
+                        >
+                          View Curriculum
                         </Link>
-                      </CardFooter>
-                    </Card>
+                      </div>
+                    </Reveal>
                   ))}
                 </div>
-              </TabsContent>
-            ))}
-          </Tabs>
+              ),
+          )}
+
+          <Reveal delay={150} className="mt-8 text-center text-sm text-[#666]">
+            🔒 Enrollment is confirmed personally by our team on WhatsApp — you
+            can ask anything before you pay. EMI options available.
+          </Reveal>
         </div>
       </div>
     </section>

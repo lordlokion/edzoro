@@ -6,13 +6,16 @@ import Approach from "../components/Approach";
 import Learning from "../components/Learning";
 import Classfeat from "../components/Classfeat";
 import Learning2 from "../components/Learning2";
-import Coursetab from "../components/Coursetab";
+
 import Roadmap from "../components/Roadmap";
 import Slider from "../components/Slider";
 import Join from "../components/Join";
 import Parentstestimonial from "../components/Parentstestimonial";
 import Footer from "../components/Footer";
 import Reveal from "../components/Reveal";
+import CoursesHome from "../components/CoursesHome";
+import ClassVideo from "../components/ClassVideo";
+import { WhatsAppFloatingButton } from "../components/WhatsApp";
 
 
 export default function Home() {
@@ -42,8 +45,9 @@ export default function Home() {
           <Learning2 />
         </Reveal>
         <Reveal>
-          <Coursetab />
+          <ClassVideo />
         </Reveal>
+        <CoursesHome />
         <Reveal>
           <Roadmap />
         </Reveal>
@@ -58,6 +62,7 @@ export default function Home() {
         </Reveal>
         <Footer />
       </main>
+      <WhatsAppFloatingButton />
     </div>
   );
 }
